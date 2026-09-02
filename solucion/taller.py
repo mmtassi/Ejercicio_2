@@ -29,9 +29,6 @@ class OrdenDeTrabajo:
         if item.orden is not None:
             raise ValueError("El item ya pertenece a una orden")
 
-        self.items.append(item)
-        item.orden = self
-
     def calcular_presupuesto(self):
         total = 0
 
