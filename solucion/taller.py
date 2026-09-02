@@ -17,11 +17,11 @@ class ItemDeTrabajo:
 
 class OrdenDeTrabajo:
     def __init__(self, numero, vehiculo):
+        self.numero = numero
         self.vehiculo = vehiculo
-        self.items = []
+        self._items = []
         self.mecanico = None
         self.cerrada = False
-        self.numero = numero
 
     def agregar_item(self, item):
         if self.cerrada:
@@ -30,13 +30,13 @@ class OrdenDeTrabajo:
         if item.orden is not None:
             raise ValueError("El item ya pertenece a una orden")
 
-        self.items.append(item)
+        self._items.append(item)
         item.orden = self
 
-    def calcular_presupuesto(self):
+    def presupuesto(self):
         total = 0
 
-        for item in self.items:
+        for item in self._items:
             total += item.costo
 
         return total
@@ -47,10 +47,13 @@ class OrdenDeTrabajo:
     def cerrar(self):
         self.cerrada = True
 
+    def cantidad_items(self):
+        return len(self._items)
+
 
 class Taller:
     def __init__(self):
-        self.mecanicos = []
+        self._mecanicos = []
 
     def agregar_mecanico(self, mecanico):
-        self.mecanicos.append(mecanico)
+        self._mecanicos.append(mecanico)

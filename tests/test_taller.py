@@ -1,7 +1,7 @@
 from solucion.taller import OrdenDeTrabajo, ItemDeTrabajo, Vehiculo, Mecanico
 
 
-# 1ER TEST ("CAMINOI FELIZ")
+# 1ER TEST ("CAMINO FELIZ")
 
 vehiculo = Vehiculo("AB123CD")
 mecanico = Mecanico("Juan")
@@ -15,7 +15,7 @@ orden.agregar_item(item1)
 orden.agregar_item(item2)
 orden.asignar_mecanico(mecanico)
 
-assert orden.calcular_presupuesto() == 13000
+assert orden.presupuesto() == 13000
 assert orden.mecanico == mecanico
 
 
@@ -35,17 +35,13 @@ except ValueError:
     pass
 
 
-# 3ER TEST: despues del error el item tiene que seguir en la orden original
+# 3ER TEST:
+# despues del error el item tiene que seguir en la orden original
+# y la segunda orden tiene que seguir vacia
 
 assert item.orden == orden1
-assert item in orden1.items
-assert item not in orden2.items
+assert orden1.cantidad_items() == 1
+assert orden2.cantidad_items() == 0
 
-# COMPROBACION
-try:
-    orden2.agregar_item(item)
-    assert False
-except ValueError:
-    print("Se rechazo correctamente el item repetido")
 
-print("Todos los tests pasaron correctamente")
+print("Todos los tests pasaron correctamente.")
