@@ -50,4 +50,4 @@ No es composición ni agregación porque el vehículo no forma parte de la orden
 
 Para calcular el presupuesto se puede utilizar algo externo, como una tabla de precios o descuentos, solamente en el momento de hacer el cálculo.
 
-No es una clase
+Ademas, presupuesto no es una clase.
