@@ -16,11 +16,12 @@ class ItemDeTrabajo:
 
 
 class OrdenDeTrabajo:
-    def __init__(self, vehiculo):
+    def __init__(self, numero, vehiculo):
         self.vehiculo = vehiculo
         self.items = []
         self.mecanico = None
         self.cerrada = False
+        self.numero = numero
 
     def agregar_item(self, item):
         if self.cerrada:
@@ -28,6 +29,9 @@ class OrdenDeTrabajo:
 
         if item.orden is not None:
             raise ValueError("El item ya pertenece a una orden")
+
+        self.items.append(item)
+        item.orden = self
 
     def calcular_presupuesto(self):
         total = 0

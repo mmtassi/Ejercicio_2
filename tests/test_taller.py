@@ -15,7 +15,7 @@ orden.agregar_item(item1)
 orden.agregar_item(item2)
 orden.asignar_mecanico(mecanico)
 
-assert orden.presupuesto() == 13000
+assert orden.calcular_presupuesto() == 13000
 assert orden.mecanico == mecanico
 
 
@@ -40,3 +40,12 @@ except ValueError:
 assert item.orden == orden1
 assert item in orden1.items
 assert item not in orden2.items
+
+# COMPROBACION
+try:
+    orden2.agregar_item(item)
+    assert False
+except ValueError:
+    print("Se rechazo correctamente el item repetido")
+
+print("Todos los tests pasaron correctamente")
